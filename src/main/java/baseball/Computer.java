@@ -44,7 +44,7 @@ public class Computer {
 		if (!verifyDuplicateData(data)) {
 			return new String[] {"3", "[ERROR] 중복된 숫자는 입력할 수 없습니다."};
 		}
-		return checkNumber(data);
+		return createHint(data);
 	}
 
 	private boolean verifyDataLengthAndDataType(String data) {
@@ -65,8 +65,58 @@ public class Computer {
 		return false;
 	}
 
-	private String[] checkNumber(String data) {
-
-		return new String[] {};
+	private String[] createHint(String data) {
+		String[] dataArray = data.split("");
+		int numberOfBall = countNumberOfBall(dataArray);
+		int numberOfStrike = countNumberOfStrike(dataArray);
+		if (numberOfBall == 0 && numberOfStrike == 0) {
+			return new String[] {"4", "낫싱"};
+		}
+		return createHintBallAndStrike(numberOfBall, numberOfStrike);
 	}
+
+	private int countNumberOfBall(String[] dataArray) {
+		int numberOfBall = 0;
+		for (int i = 0; i < dataArray.length; i++) {
+			numberOfBall += checkBall(dataArray[i], i);
+		}
+		return numberOfBall;
+	}
+
+	private int checkBall(String stringNumber, int index) {
+		int intNumber = Integer.parseInt(stringNumber);
+		if (numbers.contains(intNumber) && numbers.get(index) != intNumber) {
+			return 1;
+		}
+		return 0;
+	}
+
+	private int countNumberOfStrike(String[] dataArray) {
+		int numberOfStrike = 0;
+		for (int i = 0; i < dataArray.length; i++) {
+			numberOfStrike += checkStrike(dataArray[i], i);
+		}
+		return numberOfStrike;
+	}
+
+	private int checkStrike(String stringNumber, int index) {
+		if (numbers.get(index) == Integer.parseInt(stringNumber)) {
+			return 1;
+		}
+		return 0;
+	}
+
+	private String[] createHintBallAndStrike(int numberOfBall, int numberOfStrike) {
+		if (numberOfStrike == 3) {
+			return new String[] {"5", "3개의 숫자를 모두 맞히셨습니다! 게임 끝"};
+		}
+		if (numberOfStrike > 0 && numberOfBall == 0) {
+			return new String[] {"4", numberOfStrike + "스트라이크"};
+		}
+		if (numberOfStrike == 0 && numberOfBall > 0) {
+			return new String[] {"4", numberOfBall + "볼"};
+		}
+		return new String[] {"4", numberOfStrike + "스트라이크 " + numberOfBall + "볼"};
+	}
+
 }
