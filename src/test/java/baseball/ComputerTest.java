@@ -80,7 +80,7 @@ public class ComputerTest {
 		for (Integer number : checkSet) {
 			stringBuilder.append(number);
 		}
-		String answer = computer.createHint(stringBuilder.substring(0,3));
+		String answer = computer.createHint(stringBuilder.substring(0, 3));
 		assertThat(answer).isEqualTo("1스트라이크");
 	}
 
