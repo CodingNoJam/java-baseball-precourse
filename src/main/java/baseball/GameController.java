@@ -11,9 +11,9 @@ public class GameController {
 		boolean running = true;
 		while (running) {
 			String data = Printer.enterNumbers();
+			String[] answer = computer.createAnswer(data);
+			Printer.printMessage(answer[1]);
+			running = !answer[0].startsWith("5");
 		}
-
 	}
-
-
 }
