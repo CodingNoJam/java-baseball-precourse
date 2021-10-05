@@ -5,6 +5,8 @@ import java.util.Set;
 
 public class GameController {
 	private final Computer computer;
+	private static final String GAME_RESTART = "1";
+	private static final String GAME_END = "2";
 
 	public GameController() {
 		this.computer = Computer.createAndInit();
@@ -16,7 +18,7 @@ public class GameController {
 			String data = Printer.enterNumbers();
 			String answer = createAnswer(data);
 			Printer.printMessage(answer);
-			running = !answer.endsWith("끝");
+			running = !answer.endsWith(GameMessage.ANSWER_END);
 		}
 	}
 
@@ -55,14 +57,14 @@ public class GameController {
 			data = Printer.enterRestartOrEnd();
 			reQuestions = verifyDataWrongValue(data);
 		}
-		if (data.equals("1")) {
+		if (data.equals(GAME_RESTART)) {
 			return true;
 		}
 		return false;
 	}
 
 	private boolean verifyDataWrongValue(String data) {
-		if (data.equals("1") || data.equals("2")) {
+		if (data.equals(GAME_RESTART) || data.equals(GAME_END)) {
 			return false;
 		}
 		Printer.printMessage(GameMessage.ERROR_RESTART_OR_END_DATA_WRONG_VALUE);
