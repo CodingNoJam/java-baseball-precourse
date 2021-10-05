@@ -22,10 +22,10 @@ public class GameController {
 
 	private String createAnswer(String data) {
 		if (!verifyDataLengthAndDataType(data)) {
-			return "[ERROR] 3자리 숫자만 입력가능하며, 숫자는 1~9사이의 값이여야 합니다.";
+			return GameMessage.ERROR_DATA_LENGTH_DATA_TYPE;
 		}
 		if (!verifyDuplicateData(data)) {
-			return "[ERROR] 중복된 숫자는 입력할 수 없습니다.";
+			return GameMessage.ERROR_DUPLICATE_DATA;
 		}
 		return computer.createHint(data);
 	}
@@ -65,7 +65,7 @@ public class GameController {
 		if (data.equals("1") || data.equals("2")) {
 			return false;
 		}
-		Printer.printMessage("[ERROR] 1 또는 2만 입력 가능합니다.");
+		Printer.printMessage(GameMessage.ERROR_RESTART_OR_END_DATA_WRONG_VALUE);
 		return true;
 	}
 }

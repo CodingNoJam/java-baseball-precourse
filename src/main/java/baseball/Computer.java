@@ -40,7 +40,7 @@ public class Computer {
 		int numberOfBall = countNumberOfBall(dataArray);
 		int numberOfStrike = countNumberOfStrike(dataArray);
 		if (numberOfBall == 0 && numberOfStrike == 0) {
-			return "낫싱";
+			return GameMessage.ANSWER_NOTHING;
 		}
 		return createHintBallAndStrike(numberOfBall, numberOfStrike);
 	}
@@ -78,14 +78,14 @@ public class Computer {
 
 	private String createHintBallAndStrike(int numberOfBall, int numberOfStrike) {
 		if (numberOfStrike == 3) {
-			return numberOfStrike + "스트라이크 \n3개의 숫자를 모두 맞히셨습니다! 게임 끝";
+			return numberOfStrike + GameMessage.ANSWER_THREE_STRIKE;
 		}
 		if (numberOfStrike > 0 && numberOfBall == 0) {
-			return numberOfStrike + "스트라이크";
+			return numberOfStrike + GameMessage.ANSWER_STRIKE;
 		}
 		if (numberOfStrike == 0 && numberOfBall > 0) {
-			return numberOfBall + "볼";
+			return numberOfBall + GameMessage.ANSWER_BALL;
 		}
-		return numberOfStrike + "스트라이크 " + numberOfBall + "볼";
+		return numberOfStrike + GameMessage.ANSWER_STRIKE + " " + numberOfBall + GameMessage.ANSWER_BALL;
 	}
 }
