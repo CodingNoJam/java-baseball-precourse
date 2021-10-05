@@ -12,4 +12,3 @@ public class GameMessage {
 	public static final String ERROR_DUPLICATE_DATA = "[ERROR] 중복된 숫자는 입력할 수 없습니다.";
 	public static final String ERROR_RESTART_OR_END_DATA_WRONG_VALUE = "[ERROR] 1 또는 2만 입력 가능합니다.";
 }
-

@@ -42,5 +42,4 @@ class GameControllerTest extends NSTest {
 	public void runMain() {
 		Application.main(new String[] {});
 	}
-
 }
