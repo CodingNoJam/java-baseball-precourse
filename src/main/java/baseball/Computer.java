@@ -37,40 +37,12 @@ public class Computer {
 		return numbers;
 	}
 
-	public String[] createAnswer(String data) {
-		if (!verifyDataLengthAndDataType(data)) {
-			return new String[] {"30", "[ERROR] 3자리 숫자만 입력가능하며, 숫자는 1~9사이의 값이여야 합니다."};
-		}
-		if (!verifyDuplicateData(data)) {
-			return new String[] {"31", "[ERROR] 중복된 숫자는 입력할 수 없습니다."};
-		}
-		return createHint(data);
-	}
-
-	private boolean verifyDataLengthAndDataType(String data) {
-		if (data.matches("^[1-9]{3}$")) {
-			return true;
-		}
-		return false;
-	}
-
-	private boolean verifyDuplicateData(String data) {
-		Set<Character> duplicateCheckSet = new HashSet<>();
-		for (int i = 0; i < data.length(); i++) {
-			duplicateCheckSet.add(data.charAt(i));
-		}
-		if (duplicateCheckSet.size() == 3) {
-			return true;
-		}
-		return false;
-	}
-
-	private String[] createHint(String data) {
+	public String createHint(String data) {
 		String[] dataArray = data.split("");
 		int numberOfBall = countNumberOfBall(dataArray);
 		int numberOfStrike = countNumberOfStrike(dataArray);
 		if (numberOfBall == 0 && numberOfStrike == 0) {
-			return new String[] {"40", "낫싱"};
+			return "낫싱";
 		}
 		return createHintBallAndStrike(numberOfBall, numberOfStrike);
 	}
@@ -106,17 +78,16 @@ public class Computer {
 		return 0;
 	}
 
-	private String[] createHintBallAndStrike(int numberOfBall, int numberOfStrike) {
+	private String createHintBallAndStrike(int numberOfBall, int numberOfStrike) {
 		if (numberOfStrike == 3) {
-			return new String[] {"50", numberOfStrike + "스트라이크 \n3개의 숫자를 모두 맞히셨습니다! 게임 끝"};
+			return numberOfStrike + "스트라이크 \n3개의 숫자를 모두 맞히셨습니다! 게임 끝";
 		}
 		if (numberOfStrike > 0 && numberOfBall == 0) {
-			return new String[] {"41", numberOfStrike + "스트라이크"};
+			return numberOfStrike + "스트라이크";
 		}
 		if (numberOfStrike == 0 && numberOfBall > 0) {
-			return new String[] {"42", numberOfBall + "볼"};
+			return numberOfBall + "볼";
 		}
-		return new String[] {"43", numberOfStrike + "스트라이크 " + numberOfBall + "볼"};
+		return numberOfStrike + "스트라이크 " + numberOfBall + "볼";
 	}
-
 }
