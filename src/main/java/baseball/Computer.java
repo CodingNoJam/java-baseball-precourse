@@ -39,7 +39,7 @@ public class Computer {
 
 	public String[] createAnswer(String data) {
 		if (!verifyDataLengthAndDataType(data)) {
-			return new String[] {"3", "[ERROR] 3자리의 숫자만 입력가능합니다."};
+			return new String[] {"3", "[ERROR] 3자리 숫자만 입력가능하며, 숫자는 1~9사이의 값이여야 합니다."};
 		}
 		if (!verifyDuplicateData(data)) {
 			return new String[] {"3", "[ERROR] 중복된 숫자는 입력할 수 없습니다."};
