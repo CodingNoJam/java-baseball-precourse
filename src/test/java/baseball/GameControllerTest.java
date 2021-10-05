@@ -1,15 +1,15 @@
 package baseball;
 
-import nextstep.test.NSTest;
-import nextstep.utils.Randoms;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mockStatic;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mockStatic;
+import nextstep.test.NSTest;
+import nextstep.utils.Randoms;
 
 class GameControllerTest extends NSTest {
 	@BeforeEach
