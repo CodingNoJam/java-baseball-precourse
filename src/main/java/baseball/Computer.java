@@ -108,7 +108,7 @@ public class Computer {
 
 	private String[] createHintBallAndStrike(int numberOfBall, int numberOfStrike) {
 		if (numberOfStrike == 3) {
-			return new String[] {"50", "3개의 숫자를 모두 맞히셨습니다! 게임 끝"};
+			return new String[] {"50", numberOfStrike + "스트라이크 \n3개의 숫자를 모두 맞히셨습니다! 게임 끝"};
 		}
 		if (numberOfStrike > 0 && numberOfBall == 0) {
 			return new String[] {"41", numberOfStrike + "스트라이크"};
